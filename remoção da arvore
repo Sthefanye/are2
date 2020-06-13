@@ -1,0 +1,174 @@
+
+ROOT  =  "raiz"
+ Nó da classe :
+    def  __init__ ( self , dados ):
+        eu . data  =  data
+        eu . left  =  None
+        eu . right  =  None
+
+    def  __str__ ( próprio ):
+        retorno  str ( auto . de dados )
+
+classe  BinaryTree :
+    def  __init__ ( próprio , dados = Nenhum , nó = Nenhum ):
+        se  nó :
+            eu . raiz  =  nó
+         dados elif :
+            nó  =  nó ( dados )
+            eu . raiz  =  nó
+        mais :
+            eu . root  =  None
+    def  simetric_traversal ( self , node = None ):
+        se o  nó  for  Nenhum :
+            nó  =  auto . raiz
+        se  nó . esquerda :
+       
+            print ( '(' , final = '' )
+            eu . simetric_traversal ( nó . esquerda )
+        print ( nó , fim = '' )
+        se  nó . direito :
+            eu . simetric_traversal ( nó . direita )
+            print ( ')' , final = '' )
+    
+    
+    def  postorder_traversal ( self , node = None ):
+        se o  nó  for  Nenhum :
+            nó  =  auto . raiz
+        se  nó . esquerda :
+            eu . postorder_traversal ( nó . esquerda )
+        se  nó . direito :
+            eu . postorder_traversal ( nó . direita )
+        print ( nó )
+    
+    def  height ( próprio , nó = Nenhum ):
+        se o  nó  for  Nenhum :
+            nó  =  auto . raiz
+        hleft  =  0
+        hright  =  0
+        se  nó . esquerda :
+            hleft  =  self . altura ( nó . esquerda )
+        se  nó . direito :
+            certo  =  auto . height ( node . right )
+        if  hright  >  hleft :
+            retornar  hright  +  1
+        retorno  hleft  +  1
+
+    def  inorder_traversal ( self , node = None ):
+        se o  nó  for  Nenhum :
+            nó  =  auto . raiz
+        se  nó . esquerda :
+            eu . inorder_traversal ( nó . esquerda )
+        print ( nó , fim = '' )
+        se  nó . direito :
+            eu . inorder_traversal ( nó . direita )
+
+    
+    def  levelorder_traversal ( self , node = ROOT ):
+        se o  nó  ==  ROOT :
+            nó  =  auto . raiz
+
+        fila  =  Fila ()
+        fila . push ( nó )
+        enquanto  len ( fila ):
+            nó  =  fila . pop ()
+            se  nó . esquerda :
+                fila . push ( nó . esquerda )
+            se  nó . direito :
+                fila . push ( nó . direita )
+            print ( nó , fim = "" )
+
+classe  BinarySearchTree ( BinaryTree ):
+    
+    def  insert ( próprio , valor ):
+        parent  =  None
+        x  =  auto . raiz
+        enquanto ( x ):
+            parent  =  x
+            se o  valor  <  x . dados :
+                x  =  x . esquerda
+            mais :
+                x  =  x . direita
+        se  pai  for  Nenhum :
+            eu . root  =  Nó ( valor )
+         valor  elif <  pai . dados :
+            pai . left  =  Node ( valor )
+        mais :
+            pai . right  =  Nó ( valor )
+
+    def  search ( auto , valor ):
+        retornar a  si mesmo . _search ( valor , self . root )
+
+    def  _search ( auto , valor , nó ):
+        se o  nó  for  Nenhum :
+             nó de retorno
+        se  nó . data  ==  valor :
+            retornar  BinarySearchTree ( nó )
+        se  valor  <  nó . dados :
+            retornar a  si mesmo . _search ( valor , nó . esquerda )
+        retornar a  si mesmo . _search ( valor , nó . direita )
+
+    
+    def  min ( próprio , nó = ROOT ):
+        se o  nó  ==  ROOT :
+            nó  =  auto . raiz
+        enquanto  nó . esquerda :
+            nó  =  nó . esquerda
+         nó de retorno . dados
+
+    def  max ( auto , nó = ROOT ):
+        se o  nó  ==  ROOT :
+            nó  =  auto . raiz
+        enquanto  nó . direito :
+            nó  =  nó . direita
+         nó de retorno . dados
+
+    # REMOVENDO da Árvore Binária de Busca: https://youtu.be/dyLwOXBA3Ws
+    def  remove ( self , value , node = ROOT ):
+        # Se for o valor padrão, execute a partir da raiz
+        se o  nó  ==  ROOT :
+            nó  =  auto . raiz
+        # Se você quiser até um ramo, não há nada a fazer
+        se o  nó  for  Nenhum :
+             nó de retorno
+        # Se valor para menor, desce à esquerda
+        se  valor  <  nó . dados :
+            nó . esquerda  =  auto . remove ( valor , nó . esquerda )
+        # Se valor para maior, desce à direita
+         valor  elif >  nó . dados :
+            nó . right  =  self . remove ( valor , nó . direito )
+        # Se não for nem menor, nem maior, encontre! Vamos remover ...
+        mais :
+            se  nó . esquerda  é  Nenhuma :
+                 nó de retorno . direita
+             nó elif . right  é  None :
+                 nó de retorno . esquerda
+            mais :
+                # Substituto é o sucessor do valor a ser removido
+                substituto  =  auto . min ( nó . direita )
+                # Ao permitir troca de posição, troca ou valor
+                nó . data  =  substituto
+                # Depois, remova ou substitua o subárvore à direita
+                nó . right  =  self . remover ( substituir , nó . à direita )
+
+         nó de retorno
+        
+    
+    # def search (auto, valor, nó = ROOT):
+    # if node == ROOT:
+    # node = self.root
+    # se o nó for None ou node.data == value:
+    # return BinarySearchTree (nó)
+    # if value <node.data:
+    # return self.search (valor, node.left)
+    # return self.search (valor, node.right)
+        
+        
+
+se  __name__  ==  "__main__" :
+    árvore  =  BinaryTree ( 7 )
+    árvore . raiz . left  =  Nó ( 18 )
+    árvore . raiz . right  =  Nó ( 14 )
+
+    print ( árvore . raiz )
+    print ( árvore . raiz . direita )
+    print ( árvore . raiz . esquerda )
